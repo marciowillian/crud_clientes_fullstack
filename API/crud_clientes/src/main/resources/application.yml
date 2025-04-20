@@ -1,29 +1,26 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/crud_clientes
+    url: jdbc:postgresql://localhost:5433/crud_clientes
     username: postgres
     password: marcio
     driver-class-name: org.postgresql.Driver
-#    hikari:
-#      initialization-fail-timeout: 0
 
   jpa:
     hibernate:
-      ddl-auto: validate # ou "create", "validate", "none" conforme o uso
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  # opcional: logging mais limpo para SQL
+#  sql:
+#    init:
+#      mode: always
+#      schema-locations: classpath:schema.sql
+#      data-locations: classpath:data.sql
+
 logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-
-sql:
-    init:
-      mode: always
-      schema-locations: classpath:schema.sql
-      data-locations: classpath:data.sql
