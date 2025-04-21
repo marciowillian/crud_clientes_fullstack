@@ -13,5 +13,6 @@ public interface ClienteService {
 	Cliente atualizar(Long id, Cliente cliente);
 	void deletar(Long id);
 	Cliente atualizacaoParcial(Long id, Cliente cliente);
+	List<Cliente> filtrarClientes(String nome, String email, String telefone);
 
 }

@@ -64,6 +64,11 @@ public class ClienteServiceImpl implements ClienteService{
 		}).orElseThrow(() -> new RuntimeException("Cliente nao encontrado com o id: " + id));
 	}
 
+	@Override
+	public List<Cliente> filtrarClientes(String nome, String email, String telefone) {
+		return clienteRepository.filtrarClientes(nome, email, telefone);
+	}
+
 	
 	
 }

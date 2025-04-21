@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mwcc.crudclientes.dto.ClienteDTO;
@@ -40,6 +41,14 @@ public class ClienteController {
 		Optional<Cliente> cliente = clienteService.buscarPorId(id);
 		return cliente.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping("/filtro")
+	public ResponseEntity<?> filtrarClientes(@RequestParam(required = false) String nome,
+										@RequestParam(required = false) String email,
+										@RequestParam(required = false) String telefone){
+		List<Cliente> result = clienteService.filtrarClientes(nome, email, telefone);
+		return ResponseEntity.ok(result);
 	}
 	
 	@PostMapping
