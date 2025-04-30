@@ -7,15 +7,17 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mwcc.crudclientes.model.Produto;
+import com.mwcc.crudclientes.repository.ProdutoRepository;
 import com.mwcc.crudclientes.service.ProdutoService;
 
 @Service
 public class ProdutoServiceImpl implements ProdutoService{
 
+	private ProdutoRepository produtoRepository;
+	
 	@Override
 	public List<Produto> listarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return produtoRepository.findAll();
 	}
 
 	@Override
